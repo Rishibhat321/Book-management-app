@@ -34,4 +34,29 @@ public class BookRestController {
         return dbBook;
     }
 
+
+    @PutMapping("/books")
+    public Book UpdateBook(@RequestBody Book theBook) {
+        Book dbBook = bookService.save(theBook);
+
+        return dbBook;
+    }
+
+    @DeleteMapping("/books/{theBookId}")
+    public String deleteBook(@PathVariable int theBookId) {
+
+        Book theBook = bookService.findById(theBookId);
+
+        if(theBook==null) {
+            throw new RuntimeException("Book id not found: " + theBookId);
+        }
+
+        bookService.deleteById(theBookId);
+
+        return "Deleted Book id - " + theBookId;
+
+    }
+
+
+
 }
