@@ -9,4 +9,9 @@ public interface BookDAO {
     List<Book> findAll();
 
     Book save(Book theBook);
+
+    Book findById(int theBookId);
+
+    void deleteById(int theBookId);
+
 }
