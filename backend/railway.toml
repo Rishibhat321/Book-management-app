@@ -1,0 +1,10 @@
+[build]
+builder = "nixpacks"
+buildCommand = "mvn clean package"
+
+[deploy]
+startCommand = "java -Dserver.port=$PORT $JAVA_OPTS -jar target/*.jar"
+restartPolicyType = "ON_FAILURE"
+
+[deploy.envs]
+NIXPACKS_JDK_VERSION = "17"
